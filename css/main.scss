@@ -7,6 +7,7 @@ $black: #000;
 $light: #f8f9fa;
 $white: #fff;
 $light-secondary: #dee2e6; 
+$dark-secondary: #111;
 /* Light mode styles */
 body {
     background-color: #ffffff;
@@ -50,6 +51,16 @@ body {
 
 }
 
+.fullscreen {
+    /* Full screen styles */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+  }
+
 
 // DARK MODE
  .dark-mode{
@@ -69,7 +80,15 @@ body {
         }
 
     }
-   
+    
+    .alarm-container {
+        background-color : $dark-secondary !important;
+        color: $white;
+        .alarm-table th, td{
+            background-color : $dark-secondary !important; 
+            color: $white;
+        }
+    }
     
     
 
