@@ -35,6 +35,19 @@ body.dark-mode {
   font-family: "Black Ops One", cursive;
 }
 
+.world-time {
+  font-size: 2.8rem !important;
+  font-family: "Black Ops One", cursive;
+}
+.world-time span {
+  font-size: 1.8rem !important;
+}
+
+.world-date {
+  font-size: 1.5rem !important;
+  font-family: "Black Ops One", cursive;
+}
+
 .fullscreen {
   /* Full screen styles */
   position: fixed;
@@ -58,6 +71,18 @@ body.dark-mode {
   color: #ffc107 !important;
 }
 .dark-mode .clock-container .clock-date {
+  color: #ffc107 !important;
+}
+.dark-mode .card {
+  background-color: #111;
+}
+.dark-mode .card .card-header {
+  color: #fff;
+}
+.dark-mode .card .world-time {
+  color: #ffc107 !important;
+}
+.dark-mode .card .world-date {
   color: #ffc107 !important;
 }
 .dark-mode .alarm-container {
