@@ -34,7 +34,6 @@ body {
       }
   }
   
-  
 .clock-time{
     font-size: 8rem !important;
     font-family: 'Black Ops One', cursive;
@@ -99,6 +98,7 @@ body {
 
     .card {
         background-color: $dark-secondary;
+        color: $white;
         .card-header{
             color: $white;
         }
@@ -119,10 +119,13 @@ body {
         }
     }
 
+    .card{
+        .holiday {
+            color: $white !important;
+        }
+    }
+
 
     
-    
-
-   
     
 }

@@ -75,6 +75,7 @@ body.dark-mode {
 }
 .dark-mode .card {
   background-color: #111;
+  color: #fff;
 }
 .dark-mode .card .card-header {
   color: #fff;
@@ -93,3 +94,5 @@ body.dark-mode {
   background-color: #111 !important;
   color: #fff;
 }/*# sourceMappingURL=main.css.map */
+
+
