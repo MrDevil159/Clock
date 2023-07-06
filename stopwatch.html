@@ -129,7 +129,12 @@
                 <div class="col-sm p-3 min-vh-100 bg-body-tertiary">
                     <!-- content -->
                     <div class="d-flex align-items-center justify-content-center flex-column">
-                        <div class="d-flex flex-column align-items-center justify-content-center container bg-white">
+                        <div class="flex-column align-items-center justify-content-center container bg-white" id="clock-container">
+                            <div class="d-flex justify-content-end mt-3 w-100 ">
+                                <button class="bg-white border-0 px-2" onclick="var el = document.getElementById('clock-container'); el.requestFullscreen();">
+                                  <i class="bi bi-arrows-fullscreen"></i>
+                                </button>
+                              </div>
                             <!-- <p class="clock-time text-center text-secondary mt-2">
                                 11.50.25
                                 <span>
@@ -139,7 +144,7 @@
                             <p class="clock-date text-center fw-bolder text-secondary">
                                 Wed  -  Jul 5, 2023
                             </p> -->
-                            <p class="timer"><span id="hours">00</span><span id="minutes">00</span><span id="seconds">00</span><span id="tens">00</span></p>
+                            <p class="timer text-center" style="font-family: 'Black Ops One', cursive;"><span id="hours">00</span><span id="minutes">00</span><span id="seconds">00</span><span id="tens">00</span></p>
                             <!-- <div class="d-flex" style="border:2px solid red;width: 10em;
                             justify-content: space-around;">
                                 
@@ -152,7 +157,7 @@
                                 <button class="btn bg-info mx-3" id="lap" style="display: none;">Lap</button>
                             </div>
                         </div>
-                        <div class="clock-container container bg-white" style="margin-top:5em;display: flex;
+                        <div class="clock-container container bg-white pt-4" style="margin-top:5em;display: flex;
                         justify-content: center;
                         flex-direction: column;
                         align-content: center;
