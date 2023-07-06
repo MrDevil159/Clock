@@ -134,30 +134,30 @@ addTimezoneBtn.addEventListener("click", () => {
     body.classList.remove("stop-scroll")
   }
 });
-
-function initial(){
-
+function initial() {
   let parentContainer = document.getElementById("timezoneContainer");
   while (parentContainer.firstChild) {
     parentContainer.removeChild(parentContainer.firstChild);
   }
   const timezoneItem = document.getElementById("timezoneItem");
   let worldClockList = JSON.parse(localStorage.getItem("worldClock"));
-  worldClockList.forEach((ele) => {
-    let clone = timezoneItem.cloneNode(true);
-    let id = ele.replace("/", "_");
-    clone.setAttribute("id", id);
-    clone.classList.remove("d-none");
-    const headText = clone.querySelector("#timezoneHead #headText");
-    const timezoneTime = clone.querySelector("#timezoneMain #timezoneTime");
-    const timezoneDiff = clone.querySelector("#timezoneMain #timezoneDiff");
-    headText.innerHTML = ele;
-    setInterval(() => {
-      let result = getTime(ct.getTimezone(ele));
-      timezoneTime.innerHTML = result.currentTime;
-    }, 1000);
-    parentContainer.appendChild(clone);
-  });
+  if (worldClockList && Array.isArray(worldClockList)) {
+    worldClockList.forEach((ele) => {
+      let clone = timezoneItem.cloneNode(true);
+      let id = ele.replace("/", "_");
+      clone.setAttribute("id", id);
+      clone.classList.remove("d-none");
+      const headText = clone.querySelector("#timezoneHead #headText");
+      const timezoneTime = clone.querySelector("#timezoneMain #timezoneTime");
+      const timezoneDiff = clone.querySelector("#timezoneMain #timezoneDiff");
+      headText.innerHTML = ele;
+      setInterval(() => {
+        let result = getTime(ct.getTimezone(ele));
+        timezoneTime.innerHTML = result.currentTime;
+      }, 1000);
+      parentContainer.appendChild(clone);
+    });
+  }
 }
 
 function detectLocalStorageChanges() {
