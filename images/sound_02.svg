@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="162px" height="168px" viewBox="0 0 162 168" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+    <title>sound_02</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ShakeAnimation" transform="translate(-194.000000, -43.000000)" fill="#000000">
+            <g id="sound_02" transform="translate(273.500000, 146.000000) scale(-1, 1) translate(-273.500000, -146.000000) translate(186.000000, 38.000000)">
+                <g id="lightning" transform="translate(118.875000, 83.000000) scale(-1, 1) rotate(15.000000) translate(-118.875000, -83.000000) translate(81.000000, 8.000000)">
+                    <polygon id="Path" points="75.25 50 46.75 50 66.75 0.5 17.25 0.5 0.25 83.5 19.75 83.5 8.75 149.5"></polygon>
+                </g>
+                <g id="lightning" transform="translate(84.875000, 149.000000) scale(-1, 1) rotate(65.000000) translate(-84.875000, -149.000000) translate(47.000000, 74.000000)">
+                    <polygon id="Path" points="75.25 50 46.75 50 66.75 0.5 17.25 0.5 0.25 83.5 19.75 83.5 8.75 149.5"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
