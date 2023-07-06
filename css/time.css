@@ -29,6 +29,23 @@
   font-weight: 600;
 }
 
+.deleteBtn {
+  border: none;
+  background-color: unset;
+  position: absolute;
+  top: 12px;
+  right: 20px;
+}
+
 .stop-scroll {
   overflow-y: hidden;
+}
+
+.timezoneContainer .row {
+  justify-content: center;
+}
+
+.headText {
+  font-weight: 600;
+  margin-top: 5px;
 }/*# sourceMappingURL=time.css.map */
