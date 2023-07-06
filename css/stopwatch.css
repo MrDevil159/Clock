@@ -1,0 +1,38 @@
+.timer #hours, .timer #minutes, .timer #seconds {
+  font-size: 5em;
+}
+.timer #tens {
+  font-size: 2em;
+}
+.timer span:not(:nth-last-child(-n+2))::after {
+  content: ":";
+  font-size: 1em;
+}
+.timer #tens::before {
+  content: ".";
+  font-size: 1.5em;
+}
+@media only screen and (max-width: 350px) {
+  .timer {
+    font-size: 0.8em;
+  }
+}
+
+ul {
+  list-style-type: none;
+  font-size: 1.5em;
+}
+@media only screen and (max-width: 450px) {
+  ul {
+    font-size: 1em;
+  }
+}
+
+#laping p {
+  font-size: 1.5em;
+}
+@media only screen and (max-width: 450px) {
+  #laping p {
+    font-size: 1em;
+  }
+}/*# sourceMappingURL=stopwatch.css.map */

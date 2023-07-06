@@ -1,0 +1,1 @@
+{"version":3,"sources":["stopwatch.scss","stopwatch.css"],"names":[],"mappings":"AAsBM;EACI,cAAA;ACrBV;ADuBM;EACI,cAAA;ACrBV;ADuBM;EACI,YAAA;EACA,cAAA;ACrBV;ADwBQ;EACE,YAAA;EACA,gBAAA;ACtBV;ADHI;EAWF;IAiBQ,gBAAA;ECrBR;AACF;;ADwBE;EACE,qBAAA;EACA,gBAAA;ACrBJ;ADPI;EA0BF;IAIM,cAAA;ECnBN;AACF;;ADsBE;EACE,gBAAA;ACnBJ;ADhBI;EAkCF;IAGM,cAAA;ECjBN;AACF","file":"stopwatch.css"}
