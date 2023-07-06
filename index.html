@@ -40,6 +40,9 @@
     </style>
   </head>
   <body>
+   
+
+  <!-- Navbar Start -->
     <nav class="navbar bg-primary">
       <div class="container">
         <a class="navbar-brand" href="#">
@@ -138,7 +141,14 @@
         <div class="col-sm p-3 min-vh-100 bg-body-tertiary">
           <!-- content -->
           <div class="d-flex align-items-center justify-content-center">
-            <div class="clock-container container bg-white">
+            <div class="clock-container container bg-white" id="clock-container">
+
+              <div class="d-flex align-items-center justify-content-end mt-3 ">
+                <button class="bg-white border-0 px-2" onclick="var el = document.getElementById('clock-container'); el.requestFullscreen();">
+                  <i class="bi bi-arrows-fullscreen"></i>
+                </button>
+              </div>
+
               <div
                 class="form-check form-switch d-flex justify-content-center mb-2 mt-5"
               >
@@ -258,7 +268,6 @@
 
     <!-- /#sidebar -->
 
-    <!--Main Navigation-->
 
     <script>
       // Get the toggle button element
