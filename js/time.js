@@ -150,7 +150,9 @@ function initial() {
       const headText = clone.querySelector("#timezoneHead #headText");
       const timezoneTime = clone.querySelector("#timezoneMain #timezoneTime");
       const timezoneDiff = clone.querySelector("#timezoneMain #timezoneDiff");
+      const delBtn = clone.querySelector(".deleteBtn")
       headText.innerHTML = ele;
+      delBtn.setAttribute("id",id)
       setInterval(() => {
         let result = getTime(ct.getTimezone(ele));
         timezoneTime.innerHTML = result.currentTime;
@@ -175,13 +177,15 @@ function detectLocalStorageChanges() {
       let worldClockList = JSON.parse(localStorage.getItem("worldClock"));
       worldClockList.forEach((ele) => {
         let clone = timezoneItem.cloneNode(true);
-        let id = ele.replace("/", "");
+        let id = ele.replace("/", "_");
         clone.setAttribute("id", id);
         clone.classList.remove("d-none");
         const headText = clone.querySelector("#timezoneHead #headText");
+        const delBtn = clone.querySelector(".deleteBtn")
         const timezoneTime = clone.querySelector("#timezoneMain #timezoneTime");
         const timezoneDiff = clone.querySelector("#timezoneMain #timezoneDiff");
         headText.innerHTML = ele;
+        delBtn.setAttribute("id",id)
         setInterval(() => {
           let result = getTime(ct.getTimezone(ele));
           timezoneTime.innerHTML = result.currentTime;
@@ -193,6 +197,18 @@ function detectLocalStorageChanges() {
   }, 1000);
 }
 
+document.addEventListener("DOMContentLoaded", function() {
+  const deleteBtns = document.getElementsByClassName("deleteBtn");
+  
+  Array.from(deleteBtns).forEach(button => {
+    button.addEventListener("click", function() {
+      let oldData = JSON.parse(localStorage.getItem("worldClock"))
+      let id = button.id.replace("_","/")
+      let newData = oldData.filter(item => item !== id)
+      localStorage.setItem("worldClock",JSON.stringify(newData))
+    });
+  });
+});
 
 
 detectLocalStorageChanges();
