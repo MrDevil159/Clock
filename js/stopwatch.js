@@ -19,11 +19,12 @@
     var lapCount = 1;
     var lapsContent = document.getElementById("laps").innerHTML;
     var lastLap = { hours: 0, minutes: 0, tens: 0, seconds: 0 };
+    var totalLap = { thours: 0, tminutes: 0, ttens: 0, tseconds: 0 };
     var boolReset = boolStop = boolStart = false;
     var items = false;
   
     function leftPad(value) {
-      return value < 10 ? "0" + value : value;
+      return value < 10  ? "0" + value : value;
     }
   
     Start.onclick = function() {
@@ -40,7 +41,6 @@
     Stop.onclick = function() {
       boolStop = true;
       clearInterval(Interval);
-      // curse();
       var value = {'hours':hours, 'minutes':minutes, 'seconds':seconds, 'tens':tens};
       console.log(value)
       localStorage.setItem('mainTimer', JSON.stringify(value))
@@ -114,13 +114,12 @@
         aHours.innerHTML = hours;
       }
       var value = {'hours':hours, 'minutes':minutes, 'seconds':seconds, 'tens':tens};
-      console.log('seting',value)
+      // if(value.minutes.length == 1) {
+      //   value.minutes = "0" + value.minutes;
+      // }
       localStorage.setItem('mainTimer', JSON.stringify(value))
-      
-      // localStorage.removeItem('mainTimer')
     }
     
-    // let lapArray = [];
     var totalHours = 0;
     var totalMinutes = 0;
     var totalSeconds = 0;
@@ -135,10 +134,12 @@
        totalMinutes = minutes;
        totalSeconds = seconds;
        totalTens = tens;
-       console.log('total', totalHours, totalMinutes, totalSeconds)
-      console.log(lapHours, lapMinutes, lapSeconds, lapTens)
+      //  console.log('total', totalHours, totalMinutes, totalSeconds)
+      // console.log(lapHours, lapMinutes, lapSeconds, lapTens)
+      console.log('lastlap', lastLap.hours, lastLap.minutes, lastLap.seconds, lastLap.tens);
        lapHours = hours - lastLap.hours;
        lapMinutes = minutes - lastLap.minutes;
+      
       if (lapMinutes < 0) {
         lapMinutes = minutes - lastLap.minutes + 60;
       }
@@ -146,22 +147,46 @@
       if (lapSeconds < 0) {
         lapSeconds = seconds - lastLap.seconds + 60;
       }
+      if (lastLap.minutes == 0 && minutes == 1) {
+        lapMinutes = 0;
+      }
        lapTens = tens - lastLap.tens;
       if (lapTens < 0) {
         lapTens = tens - lastLap.tens + 100;
       }
+      if(minutes == 0 && lastLap.seconds == 0) {
+        lapSeconds = 0;
+      }
+      console.log('here', hours, minutes, seconds, tens)
       lastLap = {
         tens: tens,
         seconds: seconds,
         minutes: minutes,
         hours: hours
       };
+
+      console.log('lastlap1', lastLap.tens, lastLap.seconds, lastLap.minutes, lastLap.hours)
+      if(boolReset) {
+        console.log('comesbool')
+        lapHours = lastLap.hours;
+        lapMinutes = lastLap.minutes;
+        lapSeconds = lastLap.seconds;
+        lapTens = lastLap.tens;
+        boolReset = false;
+      }
       if(items) {
+        console.log('lastlap', lastLap.tens, lastLap.seconds, lastLap.minutes, lastLap.hours)
         console.log('hi', lapHours,lapMinutes, lapSeconds, lapTens)
-        lapHours = 0;
-        lapMinutes = 0;
-        lapSeconds = 0;
-        lapTens = 0;
+        console.log('previous total', totalLap.thours, totalLap.tminutes, totalLap.tseconds, totalLap.ttens);
+        lapHours = lastLap.hours - (+totalLap.thours);
+        lapMinutes = lastLap.minutes - (+totalLap.tminutes);
+        lapSeconds = lastLap.seconds - (+totalLap.tseconds);
+        if (+totalLap.ttens > lastLap.tens) {
+            lapTens = (+totalLap.ttens) - lastLap.tens;
+        } else {
+            lapTens = lastLap.tens - (+totalLap.ttens);
+        }
+        console.log('SMH', lapHours, lapMinutes, lapSeconds, lapTens);
         items = false;
       }
       
@@ -169,50 +194,51 @@
       
       if (localStorage.getItem("lapsLength") !== null) {
         lapCount = localStorage.getItem("lapsLength");
-        console.log(lapCount)
       }
       
       creatingLis();
         
-        // lapArray.push({'hours':leftPad(lapHours), 'minutes':leftPad(lapMinutes), 'seconds':leftPad(lapSeconds), 'tens':leftPad(lapTens)})
-        // localStorage.setItem('lapTime', JSON.stringify(lapArray))
-        // localStorage.clear();
         var len = Laps.getElementsByTagName('li').length;
         localStorage.setItem("lapsLength", len + 1);
     };
 
     function creatingLis() {
-      var lapItem = document.createElement("li");
-      console.log('lap', lapCount);
-      lapItem.innerHTML =
+        var lapItem = document.createElement("li");
+        console.log('lap', lapCount);
+        console.log('laptimes', lapHours, lapMinutes, lapSeconds, lapTens)
+        lapItem.innerHTML =
         "Lap " +
         lapCount++ +
         " – " +
-        leftPad(lapHours) +
+        leftDads(lapHours) +
         ":" +
-        leftPad(lapMinutes) +
+        leftDads(lapMinutes) +
         ":" +
-        leftPad(lapSeconds) +
+        leftDads(lapSeconds) +
         "." +
-        leftPad(lapTens);
+        leftDads(lapTens);
         
-      console.log(totalHours, totalMinutes, totalSeconds)
+        console.log('ts',totalHours, totalMinutes, totalSeconds)
+        totalLap.thours = totalHours;
+        totalLap.tminutes = totalMinutes;
+        totalLap.tseconds = totalSeconds;
+        totalLap.ttens = totalTens;
+        console.log('next', totalLap.thours, totalLap.tminutes, totalLap.tseconds, totalLap.ttens);
         var totalTimes = document.createElement('li');
         totalTimes.innerHTML = leftDads(totalHours) + ":" + leftDads(totalMinutes) + ":" + leftDads(totalSeconds) + ":" + leftDads(totalTens)
         Laps.insertBefore(lapItem, Laps.firstChild);
         totalTaps.insertBefore(totalTimes, totalTaps.firstChild);
         localStorage.setItem("laps", Laps.innerHTML);
-        localStorage.setItem("totalLaps", totalTaps.innerHTML);
+        localStorage.setItem("totalLaps", totalTaps.innerHTML);  
     }
-
-
-    function leftPads(value) {
-      return value < 10 ? "0" + value : value;
-    }
+    
     function leftDads(value) {
       console.log('th', value);
       if (value == 0 && value.length >= 1) {
         return "00";
+      }
+      if(value.length > 1) {
+        return value;
       }
       return value < 10  ? "0" + value : value;
     }
@@ -228,35 +254,48 @@
     };
     
     window.addEventListener("DOMContentLoaded", function() {
+        if(localStorage.getItem('totalLaps') !== null) {
+            let rs = localStorage.getItem('totalLaps').substring(4, 15)
+            console.log('r', rs)
+            let t = rs.split(':')
+            // console.log(t);
+            totalLap.thours = t[0];
+            totalLap.tminutes = t[1];
+            totalLap.tseconds = t[2];
+            totalLap.ttens = t[3];
+            // console.log('next', totalLap.thours, totalLap.tminutes, totalLap.tseconds, totalLap.ttens);
+        }
+        
         if (localStorage.getItem("laps")) {
           Laps.innerHTML = localStorage.getItem("laps");
-          console.log('len', localStorage.getItem("laps").length)
+          // console.log('len', localStorage.getItem("laps").length)
           totalTaps.innerHTML = localStorage.getItem("totalLaps");
           
           if (localStorage.getItem("lapsLength").length == 0) {
-              console.log('li','0')
+              // console.log('li','0')
           }
           items = true;
         } 
         if(localStorage.getItem('mainTimer') === null) {
-
-        
-        var value = {'hours':hours, 'minutes':minutes, 'seconds':seconds, 'tens':tens};
-        console.log(value)
-        localStorage.setItem('mainTimer', JSON.stringify(value))
+            var value = {'hours':leftDads(hours), 'minutes':leftDads(minutes), 'seconds':seconds, 'tens':tens};
+            // console.log(value)
+            localStorage.setItem('mainTimer', JSON.stringify(value))
         }
         
 
         if (localStorage.getItem('mainTimer') !== null) {
           var s = localStorage.getItem('mainTimer');
           var t = JSON.parse(s);
-          console.log('ts',typeof t.hours)
-          console.log('k',(t.hours.toString()).length);
+          // console.log('ts',typeof t.hours)
+          // console.log('k',(t.hours.toString()).length);
           if ((t.hours.toString()).length == 1 && t.hours.toString() == "0") {
             t.hours = "00";
           }
           if ((t.minutes.toString()).length == 1 && t.minutes.toString() == "0") {
             t.minutes = "00";
+          }
+          if ((t.minutes.toString()).length == 1) {
+            t.minutes = "0" + t.minutes;
           }
           hours = t.hours
           minutes = (t.minutes);
