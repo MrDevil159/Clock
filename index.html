@@ -430,7 +430,7 @@
       
       
       toggleButton.addEventListener("click", function () {
-  const darkThemeToggle = localStorage.getItem("darkTheme") || "false";
+        const darkThemeToggle = localStorage.getItem("darkTheme") || "false";
         if (darkThemeToggle == "true") {
       document.body.classList.add("dark-mode");
       } else {
@@ -440,7 +440,7 @@
         checkTheme();
       });
       function checkTheme() {
-      const darkThemeToggle = localStorage.getItem("darkTheme") || "false";
+        const darkThemeToggle = localStorage.getItem("darkTheme") || "false";
         if (darkThemeToggle == "true") {
       document.body.classList.add("dark-mode");
       } else {
