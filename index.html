@@ -420,17 +420,19 @@
     <script>
       // Get the toggle button element
       const toggleButton = document.getElementById("toggle-btn");
-      const darkThemeToggle = localStorage.getItem("darkTheme") || "false";
+      
       // Add event listener to handle the toggle button click
       
       
       
-      if (darkThemeToggle == "true") {
+      
+      toggleButton.addEventListener("click", function () {
+        const darkThemeToggle = localStorage.getItem("darkTheme") || "false";
+        if (darkThemeToggle == "true") {
       document.body.classList.add("dark-mode");
       } else {
         document.body.classList.remove("dark-mode");
         }
-      toggleButton.addEventListener("click", function () {
         // Toggle the 'dark-mode' class on the body element
         if (darkThemeToggle == "false") {
           localStorage.setItem("darkTheme", "true");
