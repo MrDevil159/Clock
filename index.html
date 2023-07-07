@@ -424,31 +424,29 @@
       // Add event listener to handle the toggle button click
       
       window.addEventListener("load",()=> {
-      const darkThemeToggle = localStorage.getItem("darkTheme") || "false";
-        if (darkThemeToggle == "true") {
-      document.body.classList.add("dark-mode");
-      } else {
-        document.body.classList.remove("dark-mode");
-        }
+      checkTheme();
         });
       
       
       
       toggleButton.addEventListener("click", function () {
-        const darkThemeToggle = localStorage.getItem("darkTheme") || "false";
-        if (darkThemeToggle == "false") {
-          localStorage.setItem("darkTheme", "true");
-          } else {
-            localStorage.setItem("darkTheme", "false");
-            }
+  const darkThemeToggle = localStorage.getItem("darkTheme") || "false";
         if (darkThemeToggle == "true") {
       document.body.classList.add("dark-mode");
       } else {
         document.body.classList.remove("dark-mode");
         }
         // Toggle the 'dark-mode' class on the body element
-        
+        checkTheme();
       });
+      function checkTheme() {
+      const darkThemeToggle = localStorage.getItem("darkTheme") || "false";
+        if (darkThemeToggle == "true") {
+      document.body.classList.add("dark-mode");
+      } else {
+        document.body.classList.remove("dark-mode");
+        }
+      }
     </script>
     <script src="./js/alarm.js"></script>
 
